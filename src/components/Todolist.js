@@ -1,5 +1,8 @@
 import { useState } from "react";
 import TodoItem from "./Todoitem";
+import Container from "@mui/material/Container";
+import { Button } from "@mui/material";
+import { Stack } from "@mui/system";
 
 function TodoList() {
   const [tasks, setTasks] = useState([
@@ -40,7 +43,7 @@ function TodoList() {
     );
   }
   return (
-    <div className="todo-list">
+    <Stack>
       {tasks.map((task) => (
         <TodoItem
           key={task.id}
@@ -50,8 +53,10 @@ function TodoList() {
         />
       ))}
       <input value={text} onChange={(e) => setText(e.target.value)} />
-      <button onClick={() => addTask(text)}>Add</button>
-    </div>
+      <Button variant="contained" onClick={() => addTask(text)}>
+        Add
+      </Button>
+    </Stack>
   );
 }
 export default TodoList;
